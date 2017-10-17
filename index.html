@@ -3,7 +3,22 @@ layout: default
 title: Mark Heimann
 ---
 <div class="blurb">
-    <p>I am a second-year PhD student in computer science at the University of Michigan working in the <a href="http://web.eecs.umich.edu/~dkoutra/group/index.html">GEMS Lab</a> under the supervision of <a href="http://web.eecs.umich.edu/~dkoutra">Danai Koutra</a>. Specifically, my current research interests include algorithmic methods for speeding up large matrix-based data mining and machine learning problems, as well as representation learning in networks. 
+    <p>I am a third-year PhD student in computer science at the University of Michigan working in the <a href="http://web.eecs.umich.edu/~dkoutra/group/index.html">GEMS Lab</a> under the supervision of <a href="http://web.eecs.umich.edu/~dkoutra">Danai Koutra</a>. Specifically, my current research interests involve representation learning in networks, where I am developing methods to learn vector embeddings of nodes that can be used for multi-network problems such as network alignment.  
 
-    <p>Other significant pursuits of mine include chess, where I am an active competitive player with the master title in both the United States Chess Federation and FIDE, and music.  I am interested in creating artificial intelligence technology for music analysis and performance, as well as the design and use of electronic effects especially for augmenting acoustic instruments. </p>
 </div><!-- /.blurb -->
+
+<h2>Research Projects</h2>
+<div class="blurb">
+<ul>
+  <li><b>Multi-Network Representation Learning: </b> Methods to learn representations for nodes in graphs have exploded in popularity as techniques from deep learning have been shown to be extensible to the network setting and have led to state-of-the-art results on single graphs.  We <a href="http://www.mlgworkshop.org/2017/paper/MLG2017_paper_26.pdf">show</a> that most existing methods have weaknesses when applied to multiple graphs, because the criteria they optimize only make sense in a single graph.  We develop a new method for representation learning, Structural Matrix Factorization that a) preserves node similarities based on structural identity that can be compared in multiple graphs, and b) omits the variance-inducing context sampling with random walks that many competing methods use.   Our main framework, REGAL (REpresentation learning for Graph ALignment) iteratively alternates between learning alignment information by matching nodes with similar embeddings and learning embeddings that preserve similarities between nodes thought to align.  
+
+  <li><b>Fast Network Alignment: </b> We develop HashAlign, a flexible framework for aligning graphs quickly by using locality-sensitive hashing to avoid comparing all possible combinations of nodes.  Instead, with high probability we only compare the most similar nodes based on feature vectors for which we propose sensible construction methods.  This framework is flexible, as it can be easily extended to graphs where node and/or edge attributes are known; if known, they can be incorporated into the nodes' feature vectors.  
+
+  <li><b>Solving Large-Scale Linear Systems: </b> We develop FLOWR, a fast "flow"-based methods for solving network problems that can be expressed as linear systems, including Random Walk with Restart (RWR), in a distributed setting.  Such systems, we show, can be solved in a divide-and-conquer fashion by breaking them into subproblems (smaller clusters of the original network) such that the communication between subproblems (vertices adjacent to vertices in other clusters, or "flow") is minimized.  Furthermore, our method can leverage the benefit of overlapping clusters, which makes individual clusters larger, but minimizes the amount of communication across clusters.
+</ul>
+</div>
+
+<h2> Other Interests</h2>
+<div class="blurb">
+<p>Other significant pursuits of mine include chess, where I am an active competitive player with the master title in both the United States Chess Federation and <a href="https://ratings.fide.com/card.phtml?event=2028441">FIDE</a>, and music.  I am interested in creating artificial intelligence technology for music analysis and performance, as well as the design and use of electronic effects especially for augmenting acoustic instruments. </p>
+</div>
