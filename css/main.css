@@ -41,3 +41,13 @@ ul.posts {
 ul.posts li {
     list-style: none;
 }
+
+.project_figs {
+    width: auto;
+    height: 150px;
+    /*text-align: right;*/
+    display: block;
+    margin: 0 auto;
+}
+
+
