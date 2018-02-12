@@ -15,13 +15,12 @@ title: Mark Heimann
     I have an eclectic set of <a href="other.html">other interests</a> ranging from competitive (high-level) chess and (novice-level) powerlifting to music and amateur baking.  Sometimes I manage to combine them with my work; for instance, I am very interested in creating artificial intelligence technology for music analysis and performance, as well as the design and use of electronic effects especially for augmenting acoustic instruments.  Most of the time, though, they exist in the space left for them by life as a PhD student, but I'm always happy to talk about them.  
 </p>
 
-
 </div><!-- /.blurb -->
 
 <h2>Research Projects</h2>
 <div class="blurb">
 <ul>
-  <li><b>Multi-Network Representation Learning: </b> Methods to learn representations for nodes in graphs have exploded in popularity as techniques from deep learning have been shown to be extensible to the network setting and have led to state-of-the-art results on single graphs.  We show that most existing methods have weaknesses when applied to multiple graphs, because the criteria they optimize only make sense in a single graph.  We develop a new method for representation learning, Structural Matrix Factorization that a) preserves node similarities based on structural identity that can be compared in multiple graphs, and b) omits the variance-inducing context sampling with random walks that many competing methods use.   Our main framework, REGAL (REpresentation learning for Graph ALignment) iteratively alternates between learning alignment information by matching nodes with similar embeddings and learning embeddings that preserve similarities between nodes thought to align. 
+  <li><b>Multi-Network Representation Learning: </b> Most representation learning methods for nodes in graphs, despite their popularity for downstream graph mining tasks on a single graph, produce embeddings that are not comparable across multiple graphs, because the criteria they optimize only make sense in a single graph. We develop a new method for representation learning, Cross-network Matrix Factorization (xNetMF) that a) preserves node similarities based on structural identity and attribute information (if available) that can be compared in multiple graphs, and b) omits the variance-inducing context sampling with random walks that many competing methods use.  Leveraging techniques from low-rank matrix approximation allows our method to scale to extremely large networks.  We show the comparability of the xNetMF embeddings by using them for graph alignment: our framework REGAL (REpresentation learning for Graph ALignment) leverages data structures for efficiently similarity search to infer alignments from the similarity of the learned embeddings. 
 
   	<img src="assets/project_figs/REGAL.png" class = "project_figs">
 
