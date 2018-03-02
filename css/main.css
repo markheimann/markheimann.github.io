@@ -51,8 +51,8 @@ ul.posts li {
 }
 
 .project_figs {
-    width: 1000px;
-    height: 1000px;
+    width: auto;
+    height: 400px;
     /*text-align: right;*/
     display: block;
     margin: 0 auto;
