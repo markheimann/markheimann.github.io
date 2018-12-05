@@ -4,7 +4,7 @@ title: Mark Heimann
 ---
 <div class="blurb">
   <p>
-    I am a PhD candidate in the computer science department at the University of Michigan, where I consider myself fortunate to be a member of the <a href="http://gems.eecs.umich.edu/">GEMS Lab</a> and advised by <a href="http://web.eecs.umich.edu/~dkoutra">Danai Koutra</a>. I spent the summer of 2018 at Oak Ridge National Laboratory, working with <a href="https://www.ornl.gov/staff-profile/ramakrishnan-ramki-kannan">Dr. Ramakrishnan Kannan</a> on nonlinear dimensionality reduction.  We collaborated with researchers at the <a href="https://www.ornl.gov/facility/cnms">Center for Nanophase Materials Sciences</a> to develop new algorithms for hyperspectral unmixing.
+    I am a PhD candidate in the computer science department at the University of Michigan, where I consider myself fortunate to be a member of the <a href="https://gemslab.github.io/">GEMS Lab</a> and advised by <a href="http://web.eecs.umich.edu/~dkoutra">Danai Koutra</a>. I spent the summer of 2018 at Oak Ridge National Laboratory, working with <a href="https://www.ornl.gov/staff-profile/ramakrishnan-ramki-kannan">Dr. Ramakrishnan Kannan</a> on nonlinear dimensionality reduction.  We collaborated with researchers at the <a href="https://www.ornl.gov/facility/cnms">Center for Nanophase Materials Sciences</a> to develop new algorithms for hyperspectral unmixing.
   </p>
 
 <p>
@@ -20,13 +20,13 @@ title: Mark Heimann
   <li><b>Multi-Network Representation Learning: </b> We propose REGAL, a framework for network alignment that leverages latent feature representations of nodes (also known as node embeddings) in multiple networks.  Most existing node embedding methods, despite their popularity for downstream graph mining tasks on a single graph, produce embeddings that are not comparable across multiple graphs.  Thus, as part of REGAL we develop a new method for node embedding, Cross-network Matrix Factorization (xNetMF) that a) preserves node similarities based on structural identity and attribute information (if available) that can be compared in multiple graphs, and b) omits the variance-inducing context sampling with random walks that many competing methods use.  Leveraging techniques from low-rank matrix approximation for embedding, and efficient data structure for embedding matching, allows REGAL to scale to extremely large networks.  
 
   	<img src="assets/project_figs/REGAL.png" class = "project_figs">
-
+</div>
   	&nbsp;
   	&nbsp;
   	&nbsp;
   	&nbsp;
 
-
+<div class="blurb">
   <li><b>Fast Network Alignment: </b> We develop HashAlign, a flexible framework for aligning graphs quickly by using locality-sensitive hashing to avoid comparing all possible combinations of nodes.  Instead, with high probability we only compare the most similar nodes based on feature vectors for which we propose sensible construction methods.  This framework is flexible, as it can be easily extended to graphs where node and/or edge attributes are known; if known, they can be incorporated into the nodes' feature vectors. 
 
   <img src="assets/project_figs/HashAlign.png" class = "project_figs"> 
@@ -35,7 +35,9 @@ title: Mark Heimann
   &nbsp;
   &nbsp;
   &nbsp;
+  </div>
 
+<div class="blurb">
   <li><b>Solving Large-Scale Linear Systems: </b> We develop FLOWR, a fast "flow"-based methods for solving network problems that can be expressed as linear systems, including Random Walk with Restart (RWR), in a distributed setting.  Such systems, we show, can be solved in a divide-and-conquer fashion by breaking them into subproblems (smaller clusters of the original network) such that the communication between subproblems (vertices adjacent to vertices in other clusters, or "flow") is minimized.  Furthermore, our method can leverage the benefit of overlapping clusters, which makes individual clusters larger, but minimizes the amount of communication across clusters.
 
   	<img src="assets/project_figs/FLOWR.png" class = "project_figs">
@@ -51,9 +53,9 @@ title: Mark Heimann
 <h2>Publications</h2>
 <div class="blurb">
 <ul>
-  <li> <b>Mark Heimann</b>, Haoming Shen, Tara Safavi, and Danai Koutra.  <a href="papers/REGAL-CIKM18.pdf">REGAL: Representation Learning-based Graph Alignment</a>. International Conference on Information and Knowledge Management (CIKM), 2018.
+  <li> <b>Mark Heimann</b>, Haoming Shen, Tara Safavi, and Danai Koutra.  <a href="papers/REGAL-CIKM18.pdf">REGAL: Representation Learning-based Graph Alignment</a>. International Conference on Information and Knowledge Management (CIKM), 2018.  [<a href="https://github.com/GemsLab/REGAL">code</a>]
 	<li> <b>Mark Heimann</b>*, Wei Lee*, Shengjie Pan, Kuan-Yu Chen, and Danai Koutra.  <a href="papers/HashAlign-PAKDD18-full.pdf">HashAlign: Hash-Based Alignment of Multiple Graphs</a>.  Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD), 2018.
-	<li> Yujun Yan, <b>Mark Heimann</b>, Di Jin, and Danai Koutra.  <a href="http://web.eecs.umich.edu/~dkoutra/papers/18_FlowR_SDM_CR.pdf">Fast Flow-based Methods for Solving Linear Systems in a Distributed Multi-query Setting</a>.  SIAM International Conference on Data Mining (SDM), 2018.
+	<li> Yujun Yan, <b>Mark Heimann</b>, Di Jin, and Danai Koutra.  <a href="http://web.eecs.umich.edu/~dkoutra/papers/18_FlowR_SDM_CR.pdf">Fast Flow-based Random Walk with Restart in a Multi-query Setting</a>.  SIAM International Conference on Data Mining (SDM), 2018.
 <li> <b>Mark Heimann</b> and Danai Koutra. <a href="http://www.mlgworkshop.org/2017/paper/MLG2017_paper_26.pdf">On Generalizing Neural Node Embedding Methods to Multi-Network Problems</a>. KDD Workshop on Mining and Learning with Graphs (MLG), 2017.
 </ul>
 
