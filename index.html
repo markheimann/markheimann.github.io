@@ -19,7 +19,8 @@ title: Mark Heimann
 <ul>
   <li><b>Multi-Network Representation Learning: </b> We propose REGAL, a framework for network alignment that leverages latent feature representations of nodes (also known as node embeddings) in multiple networks.  Most existing node embedding methods, despite their popularity for downstream graph mining tasks on a single graph, produce embeddings that are not comparable across multiple graphs.  Thus, as part of REGAL we develop a new method for node embedding, Cross-network Matrix Factorization (xNetMF) that a) preserves node similarities based on structural identity and attribute information (if available) that can be compared in multiple graphs, and b) omits the variance-inducing context sampling with random walks that many competing methods use.  Leveraging techniques from low-rank matrix approximation for embedding, and efficient data structure for embedding matching, allows REGAL to scale to extremely large networks.  
 
-  	<img src="assets/project_figs/REGAL.png" class = "project_figs">
+  	<img src="assets/project_figs/REGAL.png" class = "project_figs" align = "right">
+    <BR clear="left">
 </div>
   	&nbsp;
   	&nbsp;
@@ -29,26 +30,26 @@ title: Mark Heimann
 <div class="blurb">
   <li><b>Fast Network Alignment: </b> We develop HashAlign, a flexible framework for aligning graphs quickly by using locality-sensitive hashing to avoid comparing all possible combinations of nodes.  Instead, with high probability we only compare the most similar nodes based on feature vectors for which we propose sensible construction methods.  This framework is flexible, as it can be easily extended to graphs where node and/or edge attributes are known; if known, they can be incorporated into the nodes' feature vectors. 
 
-  <img src="assets/project_figs/HashAlign.png" class = "project_figs"> 
-
-  &nbsp;
-  &nbsp;
-  &nbsp;
-  &nbsp;
+  <img src="assets/project_figs/HashAlign.png" class = "project_figs" align = "right"> 
+  <BR clear="left">
   </div>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 <div class="blurb">
   <li><b>Solving Large-Scale Linear Systems: </b> We develop FLOWR, a fast "flow"-based methods for solving network problems that can be expressed as linear systems, including Random Walk with Restart (RWR), in a distributed setting.  Such systems, we show, can be solved in a divide-and-conquer fashion by breaking them into subproblems (smaller clusters of the original network) such that the communication between subproblems (vertices adjacent to vertices in other clusters, or "flow") is minimized.  Furthermore, our method can leverage the benefit of overlapping clusters, which makes individual clusters larger, but minimizes the amount of communication across clusters.
 
-  	<img src="assets/project_figs/FLOWR.png" class = "project_figs">
-
-  	&nbsp;
-  	&nbsp;
-  	&nbsp;
-  	&nbsp;
+  	<img src="assets/project_figs/FLOWR.png" class = "project_figs" align = "right">
+    <BR clear="left">
 </ul>
-
 </div>
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 <h2>Publications</h2>
 <div class="blurb">
