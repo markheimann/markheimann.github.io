@@ -53,7 +53,7 @@ ul.posts li {
 .project_figs {
     width: 100;
     float:right;
-    max-width:100%;
+    max-width:50%;
     height: auto;
     /*text-align: right;*/
     display: block;
