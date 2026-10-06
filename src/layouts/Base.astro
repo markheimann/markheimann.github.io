@@ -1,0 +1,98 @@
+---
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../styles/global.css';
+import { site } from '../data/site.js';
+
+const { title, description = site.description, image = '/assets/mh-llnl.jpg' } = Astro.props;
+
+const pageTitle = title ? `${title} · ${site.name}` : site.name;
+const current = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+const canonical = new URL(current, Astro.site);
+const ogImage = new URL(image, Astro.site);
+
+const nav = [
+  { href: '/research', label: 'Research' },
+  { href: '/chess', label: 'Chess' },
+  { href: '/lifting', label: 'Lifting' },
+  { href: site.resume, label: 'CV' },
+  { href: '#contact', label: 'Contact' },
+];
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  url: Astro.site?.href,
+  jobTitle: 'Machine learning researcher',
+  worksFor: { '@type': 'Organization', name: 'Lawrence Livermore National Laboratory' },
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'University of Michigan' },
+    { '@type': 'CollegeOrUniversity', name: 'Washington University in St. Louis' },
+  ],
+  award: 'Chess Grandmaster (FIDE)',
+  sameAs: Object.values(site.links),
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap site-header__inner">
+        <a class="brand" href="/">{site.name}</a>
+        <nav class="nav" aria-label="Main">
+          {
+            nav.map((item) => (
+              <a href={item.href} aria-current={item.href === current ? 'page' : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <div class="wrap site-footer__inner">
+        <div class="stack" style="gap: 10px">
+          <div class="site-footer__title">Get in touch</div>
+          <a class="site-footer__email" href={`mailto:${site.email}`}>{site.email}</a>
+        </div>
+        <nav class="site-footer__links" aria-label="Elsewhere">
+          <a href={site.links.github}>GitHub</a>
+          <a href={site.links.scholar}>Google Scholar</a>
+          <a href={site.links.fide}>FIDE</a>
+          <a href={site.links.wikipedia}>Wikipedia</a>
+          <a href={site.links.instagram}>Instagram {site.instagramHandle}</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

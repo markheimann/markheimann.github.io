@@ -1,0 +1,147 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Publication from '../components/Publication.astro';
+import { site } from '../data/site.js';
+import { publications } from '../data/publications.js';
+import portrait from '../assets/photos/mh-llnl.jpg';
+import dulcimer from '../assets/photos/dulcimer-home.jpg';
+import macarons from '../assets/photos/macarons.jpg';
+
+const selected = publications.filter((p) => p.selected);
+---
+
+<Base>
+  <section class="wrap hero">
+    <div class="hero__text">
+      <h1>Machine learning researcher. Chess grandmaster. Powerlifter.</h1>
+      <p class="lede">
+        I work on graph learning and foundation models at Lawrence Livermore National Laboratory.
+        Outside the lab I compete in professional chess tournaments and in powerlifting, and I
+        write and speak about both.
+      </p>
+      <div class="buttons">
+        <a class="btn btn--primary" href="/research">Read my research</a>
+        <a class="btn btn--outline" href="/chess#book">Book a chess lecture or lesson</a>
+      </div>
+    </div>
+    <figure class="hero__photo">
+      <Image src={portrait} alt="Mark Heimann" width={720} loading="eager" />
+    </figure>
+  </section>
+
+  <section class="wrap section--tight">
+    <div class="doors">
+      <div class="door">
+        <div class="label">Research</div>
+        <h2>Learning on graphs, and now foundation models for biology</h2>
+        <p class="soft">
+          Researcher in the Center for Applied Scientific Computing at LLNL. PhD in computer
+          science, University of Michigan, 2020.
+        </p>
+        <a class="more" href="/research">Publications and talks</a>
+      </div>
+      <div class="door">
+        <div class="label">Chess</div>
+        <h2>Grandmaster, earned as an adult with a full-time research job</h2>
+        <p class="soft">
+          Active tournament player, <cite>Chess Life</cite> contributor, and available for
+          lectures, exhibitions and lessons.
+        </p>
+        <a class="more" href="/chess">Chess and booking</a>
+      </div>
+      <div class="door">
+        <div class="label">Lifting</div>
+        <h2>National-level raw powerlifter and national referee</h2>
+        <p class="soft">
+          Multiple-time USA Powerlifting open nationals qualifier. Third at the 2025 California
+          state championship by bodyweight-adjusted score.
+        </p>
+        <a class="more" href="/lifting">Powerlifting</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="surface">
+    <div class="wrap section split">
+      <div class="split__side stack">
+        <h2>Selected research</h2>
+        <p class="soft">
+          My PhD work used node and graph embeddings for problems like network alignment and
+          role discovery. At LLNL I have worked on graph neural networks for molecular modeling,
+          scientific image segmentation and software analysis, and more recently on foundation
+          models for bioinformatics.
+        </p>
+        <div>
+          <a class="more" href="/research#publications">All publications</a><br />
+          <a class="more" href={site.links.scholar}>Google Scholar</a>
+        </div>
+      </div>
+      <div class="split__main">
+        <ul class="rows">
+          {selected.map((pub) => <Publication pub={pub} compact />)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="stack" style="gap: 28px">
+      <h2>Elsewhere</h2>
+      <div class="cards">
+        <a class="card" href="https://www.youtube.com/watch?v=sv8HJSiF_sc">
+          <div class="label">Podcast</div>
+          <div class="card__title">
+            Perpetual Chess: becoming a grandmaster as an adult with a job outside chess
+          </div>
+        </a>
+        <a class="card" href="https://www.youtube.com/watch?v=BV51KZZdnCI">
+          <div class="label">Broadcast</div>
+          <div class="card__title">
+            Board one against Fabiano Caruana in the final round of the 2024 U.S. Masters
+          </div>
+        </a>
+        <a class="card" href="/papers/general/2025CL_chess_usmasters.pdf">
+          <div class="label">Chess Life</div>
+          <div class="card__title">
+            My report on the 2024 U.S. Masters, one of the results behind the grandmaster title
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="surface" id="more">
+    <div class="wrap section split">
+      <div class="split__side stack">
+        <h2>Music and cooking</h2>
+        <div class="photos" style="grid-template-columns: repeat(2, minmax(0, 1fr))">
+          <figure>
+            <Image src={dulcimer} alt="Playing the hammered dulcimer at home" width={480} />
+          </figure>
+          <figure>
+            <Image src={macarons} alt="A plate of homemade macarons" width={480} />
+          </figure>
+        </div>
+      </div>
+      <div class="split__main prose">
+        <p>
+          I also play a fair amount of music. I own and play a variety of instruments, of which
+          one of my favorites is the
+          <a href="https://en.wikipedia.org/wiki/Hammered_dulcimer">hammered dulcimer</a>. I've
+          played it in a couple of weddings and other
+          <a href="https://www.flickr.com/photos/michigan-engineering/39917630005/in/photostream/"
+            >assorted events</a
+          >, and you can hear a bit of it in an
+          <a href="https://thetradeoffs.bandcamp.com/">EP</a> some of my talented college friends
+          put together. At last count I've performed or recorded on five musical instruments.
+        </p>
+        <p>
+          I enjoy cooking and baking, mainly because I prefer hobbies to chores and when I
+          reached adulthood I realized that feeding myself would have to become one of those two
+          things.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

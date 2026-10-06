@@ -1,0 +1,41 @@
+---
+// One publication row. `compact` shortens the author list to surnames.
+const { pub, compact = false } = Astro.props;
+const ME = 'Mark Heimann';
+
+const surname = (name) => name.replace(/\*$/, '').split(' ').pop() + (name.endsWith('*') ? '*' : '');
+const authors = pub.authors.map((a) => ({
+  text: compact ? surname(a) : a,
+  me: a.replace(/\*$/, '') === ME,
+}));
+---
+
+<li class="row">
+  <div class="row__key">{compact ? `${pub.venue} ${pub.year}` : pub.venue}</div>
+  <div class="row__body">
+    {
+      pub.url ? (
+        <a class="row__title" href={pub.url}>{pub.title}</a>
+      ) : (
+        <span class="row__title">{pub.title}</span>
+      )
+    }
+    <div class="row__meta">
+      {authors.map((a, i) => (
+        <>
+          {a.me ? <b>{a.text}</b> : a.text}{i < authors.length - 1 ? ', ' : ''}
+        </>
+      ))}
+    </div>
+    {!compact && pub.note && <div class="row__meta">{pub.note}</div>}
+    {
+      !compact && (pub.code || pub.video) && (
+        <div class="row__links">
+          {pub.code && <a href={pub.code}>Code</a>}
+          {pub.video && <a href={pub.video}>Video</a>}
+        </div>
+      )
+    }
+    {pub.award && <span class="tag">{pub.award}</span>}
+  </div>
+</li>
