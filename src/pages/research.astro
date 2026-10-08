@@ -1,0 +1,177 @@
+---
+import Base from '../layouts/Base.astro';
+import Publication from '../components/Publication.astro';
+import { site } from '../data/site.js';
+import { publications } from '../data/publications.js';
+import { tutorials, talks, teaching, programCommittees, journals } from '../data/academic.js';
+
+const selected = publications.filter((p) => p.selected);
+const years = [...new Set(publications.map((p) => p.year))].sort((a, b) => b - a);
+---
+
+<Base
+  title="Research"
+  description="Publications, talks and teaching by Mark Heimann, a machine learning researcher at Lawrence Livermore National Laboratory working on graph learning and foundation models."
+>
+  <section class="wrap page-head">
+    <h1>Research</h1>
+    <div class="prose">
+      <p>
+        I am a researcher in the
+        <a href="https://computing.llnl.gov/casc">Center for Applied Scientific Computing</a> at
+        <a href="https://www.llnl.gov/">Lawrence Livermore National Laboratory</a>. In 2020, I
+        received my PhD in computer science from the
+        <a href="https://cse.engin.umich.edu/">University of Michigan</a>, where I was a member
+        of the <a href="https://gemslab.github.io/">GEMS Lab</a> and advised by
+        <a href="http://web.eecs.umich.edu/~dkoutra">Danai Koutra</a>. During my PhD I also
+        completed internships at the
+        <a href="https://www.isi.edu/">Information Sciences Institute</a>,
+        <a href="https://research.adobe.com/">Adobe Research</a> and
+        <a href="https://www.ornl.gov/">Oak Ridge National Laboratory</a>. I completed my
+        undergraduate degree at <a href="https://wustl.edu/">Washington University in St. Louis</a>
+        in 2015.
+      </p>
+      <p>
+        My research is in machine learning for graph or network-structured data. You can read
+        more about my PhD work using node and graph level embeddings in technical detail in my
+        <a href="/papers/20Thesis.pdf">dissertation</a>, or more quickly consult a conceptual
+        confectionary conspectus in the
+        <a href="/assets/project_figs/dessertation.png">dessertation</a> I made to celebrate my
+        dissertation defense. At Lawrence Livermore National Laboratory, I have worked on new
+        graph neural network methods and applications to molecular modeling, scientific image
+        segmentation, and software analysis. More recently, I have also begun working on
+        research in foundation models and their applications to problems in bioinformatics.
+      </p>
+    </div>
+    <div class="buttons">
+      <a class="btn btn--primary" href={site.links.scholar}>Google Scholar</a>
+      <a class="btn btn--outline" href={site.resume}>Resume (PDF)</a>
+      <a class="btn btn--outline" href={site.links.github}>GitHub</a>
+    </div>
+  </section>
+
+  <section class="surface">
+    <div class="wrap section split">
+      <div class="split__side stack">
+        <h2>Selected publications</h2>
+        <p class="soft">A short list to start with. The full list follows.</p>
+      </div>
+      <div class="split__main">
+        <ul class="rows">
+          {selected.map((pub) => <Publication pub={pub} compact />)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section split" id="publications">
+    <div class="split__side stack">
+      <h2>All publications</h2>
+      <p class="soft">* marks equal contribution.</p>
+    </div>
+    <div class="split__main">
+      {
+        years.map((year) => (
+          <>
+            <h3 class="year-heading">{year}</h3>
+            <ul class="rows">
+              {publications
+                .filter((p) => p.year === year)
+                .map((pub) => (
+                  <Publication pub={pub} />
+                ))}
+            </ul>
+          </>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="surface">
+    <div class="wrap section split" id="talks">
+      <div class="split__side stack">
+        <h2>Tutorials and talks</h2>
+      </div>
+      <div class="split__main stack" style="gap: 40px">
+        <div>
+          <h3 class="year-heading">Tutorials and symposia</h3>
+          <ul class="rows">
+            {
+              tutorials.map((t) => (
+                <li class="row">
+                  <div class="row__key row__key--wide">{t.date}</div>
+                  <div class="row__body">
+                    {t.url ? (
+                      <a class="row__title" href={t.url}>{t.title}</a>
+                    ) : (
+                      <span class="row__title">{t.title}</span>
+                    )}
+                    <div class="row__meta">{t.venue}</div>
+                    <div class="row__meta">{t.authors}</div>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div>
+          <h3 class="year-heading">Invited talks</h3>
+          <ul class="rows">
+            {
+              talks.map((t) => (
+                <li class="row">
+                  <div class="row__key row__key--wide">{t.date}</div>
+                  <div class="row__body">
+                    <span class="row__title">{t.title}</span>
+                    <div class="row__meta">
+                      {t.kind}, <a href={t.hostUrl}>{t.host}</a>. {t.place}.
+                    </div>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section split" id="teaching">
+    <div class="split__side stack">
+      <h2>Teaching and service</h2>
+    </div>
+    <div class="split__main stack" style="gap: 40px">
+      <div>
+        <h3 class="year-heading">Teaching</h3>
+        <ul class="rows">
+          {
+            teaching.map((t) => (
+              <li class="row">
+                <div class="row__key row__key--wide">{t.role}</div>
+                <div class="row__body">
+                  {t.courses.map((c) => (
+                    <div class="soft">{c}</div>
+                  ))}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="columns">
+        <div>
+          <h3 class="year-heading">Selected program committees</h3>
+          <ul class="plain-list">
+            {programCommittees.map((c) => <li>{c}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h3 class="year-heading">Selected journal reviewing</h3>
+          <ul class="plain-list">
+            {journals.map((j) => <li>{j}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

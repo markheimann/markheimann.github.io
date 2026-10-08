@@ -1,0 +1,221 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site.js';
+import { offerings, highlights, upcoming, media, press, writing } from '../data/chess.js';
+import board from '../assets/photos/chess-1000GMLaborDay.jpeg';
+
+const { fideId, fideRating, basedIn } = site.chess;
+---
+
+<Base
+  title="Chess"
+  description="Grandmaster Mark Heimann: lectures, exhibitions and lessons, tournament highlights, media and Chess Life writing."
+  image="/assets/fun_figs/chess-1000GMLaborDay.jpeg"
+>
+  <section class="band">
+    <div class="wrap hero hero--center">
+      <div class="hero__text" style="gap: 24px">
+        <div class="label">Grandmaster · United States</div>
+        <h1>GM Mark Heimann</h1>
+        <p class="lede">
+          I earned the grandmaster title as an adult while working full time as a machine
+          learning researcher. I still compete in professional tournaments, and I give lectures,
+          exhibitions and lessons.
+        </p>
+        <div class="buttons">
+          <a class="btn btn--light" href="#book">Book a lecture or lesson</a>
+          <a class="btn btn--outline-light" href={site.links.fide}>FIDE profile</a>
+        </div>
+      </div>
+      <figure class="board-frame">
+        <Image
+          src={board}
+          alt="Mark Heimann thinking at the board during a tournament game"
+          width={824}
+          loading="eager"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="surface" style="border-top: 0">
+    <div class="wrap"><dl class="facts">
+      <div>
+        <dt class="label">Title</dt>
+        <dd>Grandmaster</dd>
+      </div>
+      {
+        fideRating && (
+          <div>
+            <dt class="label">FIDE rating</dt>
+            <dd>{fideRating}</dd>
+          </div>
+        )
+      }
+      <div>
+        <dt class="label">FIDE ID</dt>
+        <dd>{fideId}</dd>
+      </div>
+      <div>
+        <dt class="label">Federation</dt>
+        <dd>United States</dd>
+      </div>
+      {
+        basedIn && (
+          <div>
+            <dt class="label">Based in</dt>
+            <dd>{basedIn}</dd>
+          </div>
+        )
+      }
+    </dl></div>
+  </section>
+
+  <section class="wrap section">
+    <div class="stack" style="gap: 32px">
+      <div class="stack" style="gap: 12px">
+        <h2>Work with me</h2>
+        <p class="lede">
+          For clubs, schools, companies, tournaments and individual players, in person or online.
+        </p>
+      </div>
+      <div class="cards">
+        {
+          offerings.map((o) => (
+            <div class="card">
+              <h3>{o.title}</h3>
+              <p>{o.text}</p>
+              {o.detail && <div class="card__detail">{o.detail}</div>}
+            </div>
+          ))
+        }
+      </div>
+      <div><a class="btn btn--primary" href="#book">Get in touch about booking</a></div>
+    </div>
+  </section>
+
+  <section class="surface">
+    <div class="wrap section halves">
+      <div>
+        <h2 style="margin-bottom: 24px">Career highlights</h2>
+        <ul class="rows">
+          {
+            highlights.map((h) => (
+              <li class="row">
+                <div class="row__key row__key--narrow">{h.year}</div>
+                <div class="row__body">
+                  <span class="row__title">{h.title}</span>
+                  <div class="soft">{h.text}</div>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+        <a class="more" style="margin-top: 12px" href={site.links.wikipedia}>More on Wikipedia</a>
+      </div>
+      {
+        upcoming.length > 0 && (
+          <div>
+            <h2 style="margin-bottom: 24px">Where I am playing next</h2>
+            <ul class="rows">
+              {upcoming.map((e) => (
+                <li class="row">
+                  <div class="row__key row__key--wide">{e.date}</div>
+                  <div class="row__body">
+                    {e.url ? (
+                      <a class="row__title" href={e.url}>{e.title}</a>
+                    ) : (
+                      <span class="row__title">{e.title}</span>
+                    )}
+                    {e.place && <div class="soft">{e.place}</div>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+      <div>
+        <h2 style="margin-bottom: 24px">Writing</h2>
+        <p class="soft" style="margin-bottom: 20px">
+          Tournament reports and essays for <cite>Chess Life</cite>, the magazine of the United
+          States Chess Federation.
+        </p>
+        <ul class="rows">
+          {
+            writing.map((w) => (
+              <li class="row">
+                <div class="row__key row__key--narrow">{w.year}</div>
+                <div class="row__body">
+                  <a class="row__title" href={w.url}>{w.title}</a>
+                  <div class="soft">{w.text}</div>
+                  {w.award && <span class="tag">{w.award}</span>}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="stack" style="gap: 28px">
+      <h2>Watch and listen</h2>
+      <div class="media">
+        {
+          media.map((m) => (
+            <a href={m.url}>
+              <div class="media__thumb">
+                <img
+                  src={`https://i.ytimg.com/vi/${m.youtubeId}/hqdefault.jpg`}
+                  alt=""
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                  onerror="this.remove()"
+                />
+                <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+                  <circle cx="28" cy="28" r="26" fill="rgba(20,33,28,0.7)" stroke="#E9EEEA" stroke-width="2" />
+                  <path d="M23 18.5L39 28L23 37.5V18.5Z" fill="#E9EEEA" />
+                </svg>
+              </div>
+              <div class="label">{m.kind}</div>
+              <div class="card__title">{m.title}</div>
+            </a>
+          ))
+        }
+      </div>
+      <div style="margin-top: 20px">
+        <h3 class="year-heading">More coverage</h3>
+        <ul class="rows">
+          {
+            press.map((p) => (
+              <li class="row">
+                <div class="row__key row__key--narrow">{p.year}</div>
+                <div class="row__body">
+                  <a class="row__title" href={p.url}>{p.title}</a>
+                  <div class="row__meta">{p.source}</div>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="book">
+    <div class="wrap cta__inner">
+      <div class="cta__text">
+        <h2>Book a lecture, exhibition or lesson</h2>
+        <p>Email me with the date, the audience and what you have in mind.</p>
+      </div>
+      <div class="cta__contact">
+        <a class="cta__email" href={`mailto:${site.email}?subject=Chess%20booking`}>{site.email}</a>
+        <a href={site.links.instagram}>Instagram {site.instagramHandle}</a>
+      </div>
+    </div>
+  </section>
+</Base>

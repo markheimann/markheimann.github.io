@@ -1,0 +1,89 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site.js';
+import deadlift from '../assets/photos/lifting-deadlift.jpg';
+import squat from '../assets/photos/lifting-squat.jpg';
+---
+
+<Base
+  title="Lifting"
+  description="Mark Heimann competes in raw powerlifting with USA Powerlifting and is a national referee."
+  image="/assets/fun_figs/lifting-deadlift.jpg"
+>
+  <section class="wrap page-head">
+    <div class="label">Powerlifting</div>
+    <h1>Lifting</h1>
+    <p class="lede">
+      In graduate school, I took up lifting weights as a nice contrast to the abstract and
+      cerebral nature of research. This eventually led me to the sport of
+      <a href="https://en.wikipedia.org/wiki/Powerlifting">powerlifting</a>.
+    </p>
+  </section>
+
+  <section class="wrap section--tight">
+    <div class="photos">
+      <figure>
+        <Image src={deadlift} alt="Mark Heimann deadlifting on a competition platform" width={800} />
+      </figure>
+      <figure>
+        <Image src={squat} alt="Mark Heimann squatting at a USA Powerlifting meet" width={800} />
+      </figure>
+    </div>
+  </section>
+
+  <section class="surface">
+    <div class="wrap section split">
+      <div class="split__side stack">
+        <h2>Competition</h2>
+        <div>
+          <a class="more" href={site.links.openpowerlifting}>Full results on OpenPowerlifting</a>
+        </div>
+      </div>
+      <div class="split__main">
+        <ul class="rows">
+          <li class="row">
+            <div class="row__key row__key--narrow">2025</div>
+            <div class="row__body">
+              <span class="row__title">Third at the California state championship</span>
+              <div class="soft">
+                By the bodyweight-adjusted strength formula used to rank powerlifters.
+              </div>
+            </div>
+          </li>
+          <li class="row">
+            <div class="row__key row__key--narrow">2023</div>
+            <div class="row__body">
+              <span class="row__title">Top 2% of raw, drug-tested male powerlifters worldwide</span>
+              <div class="soft">
+                Ranking of my competitive results as of 2023, according to the
+                <a href="https://www.openpowerlifting.org/">Open Powerlifting</a> project.
+              </div>
+            </div>
+          </li>
+          <li class="row">
+            <div class="row__key row__key--narrow">2022</div>
+            <div class="row__body">
+              <span class="row__title">Two nationals down the hall from each other</span>
+              <div class="soft">
+                I competed in the USA Powerlifting open nationals simultaneously with the
+                historic National Open chess tournament, coincidentally held down the hall.
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="prose" style="margin-top: 28px">
+          <p>
+            I have qualified for the USA Powerlifting open division national championships
+            multiple years. I am also a national referee and have refereed multiple state and
+            national powerlifting championships.
+          </p>
+          <p>
+            I post about lifting and chess on Instagram at
+            <a href={site.links.instagram}>{site.instagramHandle}</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
