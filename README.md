@@ -42,9 +42,18 @@ and publishes it. This needs one setting, once: in the repository on GitHub,
 
 ## Custom domain
 
-1. Add a file `public/CNAME` containing only the domain, e.g. `markheimann.com`.
-2. Change `site` in `astro.config.mjs` to `https://markheimann.com`.
-3. Point the domain's DNS at GitHub Pages and set it under Settings → Pages.
+The site is served at https://markheimann.com. The domain is registered with
+Cloudflare, and its DNS points at GitHub Pages:
+
+| Type  | Name | Content                                         | Proxy    |
+| ----- | ---- | ----------------------------------------------- | -------- |
+| A     | @    | 185.199.108.153, .109.153, .110.153, .111.153   | DNS only |
+| AAAA  | @    | 2606:50c0:8000::153 … 2606:50c0:8003::153       | DNS only |
+| CNAME | www  | markheimann.github.io                           | DNS only |
+
+The domain is set under Settings → Pages → Custom domain. Because the site
+deploys through GitHub Actions, no `CNAME` file is needed in the repository.
+`markheimann.github.io` redirects to the custom domain automatically.
 
 ## Old URLs
 

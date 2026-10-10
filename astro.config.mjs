@@ -1,10 +1,10 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// If you move to a custom domain, change `site` here and add a
-// public/CNAME file containing the domain (see README).
+// The custom domain itself is set in the repository's Settings → Pages
+// (see README). This value is used for canonical links and the sitemap.
 export default defineConfig({
-  site: 'https://markheimann.github.io',
+  site: 'https://markheimann.com',
   integrations: [sitemap()],
   // Keep whitespace as written, so spaces around inline links survive.
   compressHTML: false,
