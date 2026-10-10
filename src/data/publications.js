@@ -31,7 +31,6 @@ export const publications = [
     venue: 'BioKDD @ KDD',
     year: 2024,
     url: 'https://biokdd.org/biokdd24/papers/BioKDD_abstract_22.pdf',
-    selected: true,
   },
   {
     title: 'Accurate and Scalable Estimation of Epistemic Uncertainty for Graph Neural Networks',

@@ -5,7 +5,7 @@ export const site = {
   name: 'Mark Heimann',
   email: 'maheimann64@gmail.com',
   description:
-    'Mark Heimann is a machine learning researcher at Lawrence Livermore National Laboratory, a chess grandmaster and a competitive powerlifter.',
+    'Mark Heimann is a research scientist at Ivo working on post-training large language models for knowledge-intensive domains, a chess grandmaster and a competitive powerlifter.',
   resume: '/assets/MarkHeimann_Resume.pdf',
 
   links: {
@@ -19,7 +19,6 @@ export const site = {
   instagramHandle: '@theirongm',
 
   chess: {
-    fideId: '2028441',
     // Ratings change monthly; leave null to show only the FIDE link.
     fideRating: null,
     // e.g. 'San Francisco Bay Area'. Shown on the chess page when set.
