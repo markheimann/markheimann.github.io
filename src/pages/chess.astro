@@ -5,7 +5,7 @@ import { site } from '../data/site.js';
 import { offerings, highlights, upcoming, media, press, writing } from '../data/chess.js';
 import board from '../assets/photos/chess-1000GMLaborDay.jpeg';
 
-const { fideId, fideRating, basedIn } = site.chess;
+const { fideRating, basedIn } = site.chess;
 ---
 
 <Base
@@ -39,38 +39,28 @@ const { fideId, fideRating, basedIn } = site.chess;
     </div>
   </section>
 
-  <section class="surface" style="border-top: 0">
-    <div class="wrap"><dl class="facts">
-      <div>
-        <dt class="label">Title</dt>
-        <dd>Grandmaster</dd>
-      </div>
-      {
-        fideRating && (
-          <div>
-            <dt class="label">FIDE rating</dt>
-            <dd>{fideRating}</dd>
-          </div>
-        )
-      }
-      <div>
-        <dt class="label">FIDE ID</dt>
-        <dd>{fideId}</dd>
-      </div>
-      <div>
-        <dt class="label">Federation</dt>
-        <dd>United States</dd>
-      </div>
-      {
-        basedIn && (
-          <div>
-            <dt class="label">Based in</dt>
-            <dd>{basedIn}</dd>
-          </div>
-        )
-      }
-    </dl></div>
-  </section>
+  {
+    (fideRating || basedIn) && (
+      <section class="surface" style="border-top: 0">
+        <div class="wrap">
+          <dl class="facts">
+            {fideRating && (
+              <div>
+                <dt class="label">FIDE rating</dt>
+                <dd>{fideRating}</dd>
+              </div>
+            )}
+            {basedIn && (
+              <div>
+                <dt class="label">Based in</dt>
+                <dd>{basedIn}</dd>
+              </div>
+            )}
+          </dl>
+        </div>
+      </section>
+    )
+  }
 
   <section class="wrap section">
     <div class="stack" style="gap: 32px">
